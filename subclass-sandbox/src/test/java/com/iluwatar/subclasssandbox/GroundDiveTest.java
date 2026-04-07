@@ -30,9 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.github.stefanbirkner.systemlambda.Statement;
 import org.junit.jupiter.api.Test;
 
-/**
- * GroundDive unit tests.
- */
+/** GroundDive unit tests. */
 class GroundDiveTest {
 
   @Test
@@ -48,15 +46,14 @@ class GroundDiveTest {
   void testPlaySound() throws Exception {
     var groundDive = new GroundDive();
     var outputLog = getLogContent(() -> groundDive.playSound("SOUND_NAME", 1));
-    var expectedLog = "Play SOUND_NAME with volumn 1";
+    var expectedLog = "Play SOUND_NAME with volume 1";
     assertEquals(outputLog, expectedLog);
   }
 
   @Test
   void testSpawnParticles() throws Exception {
     var groundDive = new GroundDive();
-    final var outputLog = getLogContent(
-        () -> groundDive.spawnParticles("PARTICLE_TYPE", 100));
+    final var outputLog = getLogContent(() -> groundDive.spawnParticles("PARTICLE_TYPE", 100));
     final var expectedLog = "Spawn 100 particle with type PARTICLE_TYPE";
     assertEquals(outputLog, expectedLog);
   }
@@ -64,13 +61,12 @@ class GroundDiveTest {
   @Test
   void testActivate() throws Exception {
     var groundDive = new GroundDive();
-    var logs = tapSystemOutNormalized(groundDive::activate)
-        .split("\n");
+    var logs = tapSystemOutNormalized(groundDive::activate).split("\n");
     final var expectedSize = 3;
-    final var log1 = logs[0].split("-")[1].trim() + " -" + logs[0].split("-")[2].trim();
+    final var log1 = logs[0].split("--")[1].trim();
     final var expectedLog1 = "Move to ( 0.0, 0.0, -20.0 )";
     final var log2 = getLogContent(logs[1]);
-    final var expectedLog2 = "Play GROUNDDIVE_SOUND with volumn 5";
+    final var expectedLog2 = "Play GROUNDDIVE_SOUND with volume 5";
     final var log3 = getLogContent(logs[2]);
     final var expectedLog3 = "Spawn 20 particle with type GROUNDDIVE_PARTICLE";
     assertEquals(logs.length, expectedSize);
@@ -85,7 +81,6 @@ class GroundDiveTest {
   }
 
   private String getLogContent(String log) {
-    return log.split("-")[1].trim();
+    return log.split("--")[1].trim();
   }
-
 }

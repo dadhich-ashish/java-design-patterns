@@ -39,8 +39,8 @@ import lombok.extern.slf4j.Slf4j;
  * version of the feature toggle, where the enhanced version of the welcome message which is
  * personalised is turned either on or off at instance creation. This method is not as dynamic as
  * the {@link User} driven version where the feature of the personalised welcome message is
- * dependant on the {@link UserGroup} the {@link User} is in. So if the user is a memeber of the
- * {@link UserGroup#isPaid(User)} then they get an ehanced version of the welcome message.
+ * dependent on the {@link UserGroup} the {@link User} is in. So if the user is a member of the
+ * {@link UserGroup#isPaid(User)} then they get an enhanced version of the welcome message.
  *
  * <p>Note that this pattern can easily introduce code complexity, and if not kept in check can
  * result in redundant unmaintained code within the codebase.
@@ -71,13 +71,18 @@ public class App {
    */
   public static void main(String[] args) {
 
+    // Demonstrates the PropertiesFeatureToggleVersion running with properties
+    // that set the feature toggle to enabled.
+
     final var properties = new Properties();
     properties.put("enhancedWelcome", true);
     var service = new PropertiesFeatureToggleVersion(properties);
     final var welcomeMessage = service.getWelcomeMessage(new User("Jamie No Code"));
     LOGGER.info(welcomeMessage);
 
-    // ---------------------------------------------
+    // Demonstrates the PropertiesFeatureToggleVersion running with properties
+    // that set the feature toggle to disabled. Note the difference in the printed welcome message
+    // where the username is not included.
 
     final var turnedOff = new Properties();
     turnedOff.put("enhancedWelcome", false);
@@ -86,7 +91,12 @@ public class App {
         turnedOffService.getWelcomeMessage(new User("Jamie No Code"));
     LOGGER.info(welcomeMessageturnedOff);
 
-    // --------------------------------------------
+    // Demonstrates the TieredFeatureToggleVersion setup with
+    // two users: one on the free tier and the other on the paid tier. When the
+    // Service#getWelcomeMessage(User) method is called with the paid user, the welcome
+    // message includes their username. In contrast, calling the same service with the free tier
+    // user results
+    // in a more generic welcome message without the username.
 
     var service2 = new TieredFeatureToggleVersion();
 

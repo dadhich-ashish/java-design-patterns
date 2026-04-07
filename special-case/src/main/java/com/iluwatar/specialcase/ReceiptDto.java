@@ -24,28 +24,22 @@
  */
 package com.iluwatar.specialcase;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Receipt view representing the transaction recceipt.
- */
+/** Receipt view representing the transaction recceipt. */
+@RequiredArgsConstructor
+@Getter
 public class ReceiptDto implements ReceiptViewModel {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(ReceiptDto.class);
 
-  private Double price;
-
-  public ReceiptDto(Double price) {
-    this.price = price;
-  }
-
-  public Double getPrice() {
-    return price;
-  }
+  private final Double price;
 
   @Override
   public void show() {
-    LOGGER.info("Receipt: " + price + " paid");
+    LOGGER.info(String.format("Receipt: %s paid", price));
   }
 }

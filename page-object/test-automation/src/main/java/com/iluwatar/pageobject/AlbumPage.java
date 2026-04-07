@@ -24,18 +24,16 @@
  */
 package com.iluwatar.pageobject;
 
-import com.gargoylesoftware.htmlunit.WebClient;
-import com.gargoylesoftware.htmlunit.html.HtmlNumberInput;
-import com.gargoylesoftware.htmlunit.html.HtmlPage;
-import com.gargoylesoftware.htmlunit.html.HtmlSelect;
-import com.gargoylesoftware.htmlunit.html.HtmlSubmitInput;
-import com.gargoylesoftware.htmlunit.html.HtmlTextInput;
 import java.io.IOException;
 import lombok.extern.slf4j.Slf4j;
+import org.htmlunit.WebClient;
+import org.htmlunit.html.HtmlNumberInput;
+import org.htmlunit.html.HtmlPage;
+import org.htmlunit.html.HtmlSelect;
+import org.htmlunit.html.HtmlSubmitInput;
+import org.htmlunit.html.HtmlTextInput;
 
-/**
- * Page Object encapsulating the Album Page (album-page.html)
- */
+/** Page Object encapsulating the Album Page (album-page.html) */
 @Slf4j
 public class AlbumPage extends Page {
   private static final String ALBUM_PAGE_HTML_FILE = "album-page.html";
@@ -43,14 +41,10 @@ public class AlbumPage extends Page {
 
   private HtmlPage page;
 
-
-  /**
-   * Constructor.
-   */
+  /** Constructor. */
   public AlbumPage(WebClient webClient) {
     super(webClient);
   }
-
 
   /**
    * Navigates to the album page.
@@ -61,20 +55,16 @@ public class AlbumPage extends Page {
     try {
       page = this.webClient.getPage(PAGE_URL);
     } catch (IOException e) {
-      LOGGER.error("An error occured on navigateToPage.", e);
+      LOGGER.error("An error occurred on navigateToPage.", e);
     }
     return this;
   }
 
-
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public boolean isAt() {
     return "Album Page".equals(page.getTitleText());
   }
-
 
   /**
    * Sets the album title input text field.
@@ -88,7 +78,6 @@ public class AlbumPage extends Page {
     return this;
   }
 
-
   /**
    * Sets the artist input text field.
    *
@@ -100,7 +89,6 @@ public class AlbumPage extends Page {
     artistInputTextField.setText(artist);
     return this;
   }
-
 
   /**
    * Selects the select's option value based on the year value given.
@@ -114,7 +102,6 @@ public class AlbumPage extends Page {
     albumYearSelectOption.setSelectedAttribute(yearOption, true);
     return this;
   }
-
 
   /**
    * Sets the album rating input text field.
@@ -140,7 +127,6 @@ public class AlbumPage extends Page {
     return this;
   }
 
-
   /**
    * Cancel changes made by clicking the cancel button.
    *
@@ -151,11 +137,10 @@ public class AlbumPage extends Page {
     try {
       cancelButton.click();
     } catch (IOException e) {
-      LOGGER.error("An error occured on cancelChanges.", e);
+      LOGGER.error("An error occurred on cancelChanges.", e);
     }
     return new AlbumListPage(webClient);
   }
-
 
   /**
    * Saves changes made by clicking the save button.
@@ -167,9 +152,8 @@ public class AlbumPage extends Page {
     try {
       saveButton.click();
     } catch (IOException e) {
-      LOGGER.error("An error occured on saveChanges.", e);
+      LOGGER.error("An error occurred on saveChanges.", e);
     }
     return this;
   }
-
 }

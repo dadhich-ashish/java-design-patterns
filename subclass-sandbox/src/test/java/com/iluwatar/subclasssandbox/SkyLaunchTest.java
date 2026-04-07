@@ -30,9 +30,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import com.github.stefanbirkner.systemlambda.Statement;
 import org.junit.jupiter.api.Test;
 
-/**
- * SkyLaunch unit tests.
- */
+/** SkyLaunch unit tests. */
 class SkyLaunchTest {
 
   @Test
@@ -47,15 +45,14 @@ class SkyLaunchTest {
   void testPlaySound() throws Exception {
     var skyLaunch = new SkyLaunch();
     var outputLog = getLogContent(() -> skyLaunch.playSound("SOUND_NAME", 1));
-    var expectedLog = "Play SOUND_NAME with volumn 1";
+    var expectedLog = "Play SOUND_NAME with volume 1";
     assertEquals(outputLog, expectedLog);
   }
 
   @Test
   void testSpawnParticles() throws Exception {
     var skyLaunch = new SkyLaunch();
-    var outputLog = getLogContent(
-        () -> skyLaunch.spawnParticles("PARTICLE_TYPE", 100));
+    var outputLog = getLogContent(() -> skyLaunch.spawnParticles("PARTICLE_TYPE", 100));
     var expectedLog = "Spawn 100 particle with type PARTICLE_TYPE";
     assertEquals(outputLog, expectedLog);
   }
@@ -63,13 +60,12 @@ class SkyLaunchTest {
   @Test
   void testActivate() throws Exception {
     var skyLaunch = new SkyLaunch();
-    var logs = tapSystemOutNormalized(skyLaunch::activate)
-        .split("\n");
+    var logs = tapSystemOutNormalized(skyLaunch::activate).split("\n");
     final var expectedSize = 3;
     final var log1 = getLogContent(logs[0]);
     final var expectedLog1 = "Move to ( 0.0, 0.0, 20.0 )";
     final var log2 = getLogContent(logs[1]);
-    final var expectedLog2 = "Play SKYLAUNCH_SOUND with volumn 1";
+    final var expectedLog2 = "Play SKYLAUNCH_SOUND with volume 1";
     final var log3 = getLogContent(logs[2]);
     final var expectedLog3 = "Spawn 100 particle with type SKYLAUNCH_PARTICLE";
     assertEquals(logs.length, expectedSize);
@@ -84,6 +80,6 @@ class SkyLaunchTest {
   }
 
   private String getLogContent(String log) {
-    return log.split("-")[1].trim();
+    return log.split("--")[1].trim();
   }
 }

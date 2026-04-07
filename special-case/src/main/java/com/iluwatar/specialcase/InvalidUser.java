@@ -27,9 +27,7 @@ package com.iluwatar.specialcase;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Receipt View representing invalid user.
- */
+/** Receipt View representing invalid user. */
 public class InvalidUser implements ReceiptViewModel {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(InvalidUser.class);
@@ -42,6 +40,6 @@ public class InvalidUser implements ReceiptViewModel {
 
   @Override
   public void show() {
-    LOGGER.info("Invalid user: " + userName);
+    LOGGER.info(String.format("Invalid user: %s", userName));
   }
 }

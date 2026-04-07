@@ -24,18 +24,18 @@
  */
 package com.iluwatar.specialcase;
 
+import lombok.Getter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Acquire lock on the DB for maintenance.
- */
+/** Acquire lock on the DB for maintenance. */
 public class MaintenanceLock {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(MaintenanceLock.class);
 
   private static MaintenanceLock instance;
-  private boolean lock = true;
+
+  @Getter private boolean lock = true;
 
   /**
    * Get the instance of MaintenanceLock.
@@ -49,12 +49,8 @@ public class MaintenanceLock {
     return instance;
   }
 
-  public boolean isLock() {
-    return lock;
-  }
-
   public void setLock(boolean lock) {
     this.lock = lock;
-    LOGGER.info("Maintenance lock is set to: ", lock);
+    LOGGER.info("Maintenance lock is set to: {}", lock);
   }
 }

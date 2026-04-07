@@ -28,9 +28,7 @@ import java.security.SecureRandom;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-/**
- * Abstract class for GameLoop implementation class.
- */
+/** Abstract class for GameLoop implementation class. */
 public abstract class GameLoop {
 
   protected final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -39,28 +37,20 @@ public abstract class GameLoop {
 
   protected final GameController controller;
 
-  private Thread gameThread;
-
-  /**
-   * Initialize game status to be stopped.
-   */
-  public GameLoop() {
+  /** Initialize game status to be stopped. */
+  protected GameLoop() {
     controller = new GameController();
     status = GameStatus.STOPPED;
   }
 
-  /**
-   * Run game loop.
-   */
+  /** Run game loop. */
   public void run() {
     status = GameStatus.RUNNING;
-    gameThread = new Thread(this::processGameLoop);
+    Thread gameThread = new Thread(this::processGameLoop);
     gameThread.start();
   }
 
-  /**
-   * Stop game loop.
-   */
+  /** Stop game loop. */
   public void stop() {
     status = GameStatus.STOPPED;
   }
@@ -75,9 +65,8 @@ public abstract class GameLoop {
   }
 
   /**
-   * Handle any user input that has happened since the last call. In order to
-   * simulate the situation in real-life game, here we add a random time lag.
-   * The time lag ranges from 50 ms to 250 ms.
+   * Handle any user input that has happened since the last call. In order to simulate the situation
+   * in real-life game, here we add a random time lag. The time lag ranges from 50 ms to 250 ms.
    */
   protected void processInput() {
     try {
@@ -85,21 +74,17 @@ public abstract class GameLoop {
       Thread.sleep(lag);
     } catch (InterruptedException e) {
       logger.error(e.getMessage());
+      /* Clean up whatever needs to be handled before interrupting  */
+      Thread.currentThread().interrupt();
     }
   }
 
-  /**
-   * Render game frames to screen. Here we print bullet position to simulate
-   * this process.
-   */
+  /** Render game frames to screen. Here we print bullet position to simulate this process. */
   protected void render() {
     var position = controller.getBulletPosition();
-    logger.info("Current bullet position: " + position);
+    logger.info("Current bullet position: {}", position);
   }
 
-  /**
-   * execute game loop logic.
-   */
+  /** execute game loop logic. */
   protected abstract void processGameLoop();
-
 }
