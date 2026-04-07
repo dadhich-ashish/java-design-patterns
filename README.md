@@ -45,11 +45,11 @@ If you are willing to contribute to the project you will find the relevant infor
 
 # Pattern Map
 
-153 patterns across 8 categories. See the [full visual reference](PATTERNS.md) for a breakdown of every pattern.
+152 patterns across 8 categories. See the [full visual reference](PATTERNS.md) for a breakdown of every pattern.
 
 ```mermaid
 mindmap
-  root((Design Patterns 153 total))
+  root((Design Patterns 152 total))
     Creational 18
       Builder
       Factory Method

@@ -1,6 +1,6 @@
 # Design Patterns — Complete Visual Reference
 
-A comprehensive visual map of all **153** design patterns implemented in this repository, organized by category.
+A comprehensive visual map of all **152** design patterns implemented in this repository, organized by category.
 
 > For pattern source code, browse each module directory. For the website, visit [java-design-patterns.com](https://java-design-patterns.com/patterns/).
 
@@ -10,7 +10,7 @@ A comprehensive visual map of all **153** design patterns implemented in this re
 
 ```mermaid
 mindmap
-  root((Design Patterns 153 total))
+  root((Design Patterns 152 total))
     Creational
       18 patterns
       Object creation
