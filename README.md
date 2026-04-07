@@ -64,8 +64,7 @@ in your architectures and have as much fun learning them as we had while develop
 
 ```mermaid
 mindmap
-  root((Design Patterns
-153 total))
+  root((Design Patterns 153 total))
     Creational 18
       Builder
       Factory Method

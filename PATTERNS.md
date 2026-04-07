@@ -10,8 +10,7 @@ A comprehensive visual map of all **153** design patterns implemented in this re
 
 ```mermaid
 mindmap
-  root((Design Patterns
-153 total))
+  root((Design Patterns 153 total))
     Creational
       18 patterns
       Object creation
