@@ -58,6 +58,54 @@ of the following approaches
 Hopefully, you find the object-oriented solutions presented on this site useful
 in your architectures and have as much fun learning them as we had while developing them.
 
+# Pattern Map
+
+153 patterns across 8 categories. See the [full visual reference](PATTERNS.md) for a breakdown of every pattern.
+
+```mermaid
+mindmap
+  root((Design Patterns
+153 total))
+    Creational 18
+      Builder
+      Factory Method
+      Singleton
+      Prototype
+    Structural 26
+      Adapter
+      Decorator
+      Proxy
+      Facade
+    Behavioral 43
+      Observer
+      Strategy
+      Command
+      Visitor
+    Concurrency 22
+      Producer Consumer
+      Thread Pool
+      Active Object
+      Saga
+    Architectural 25
+      CQRS
+      Hexagonal
+      Event Sourcing
+      MVC
+    Functional 6
+      Monad
+      Currying
+      Pipeline
+      Combinator
+    Idiom 10
+      Callback
+      Lazy Loading
+      Execute Around
+      Double Dispatch
+    Integration 2
+      Fanout Fan-in
+      Tolerant Reader
+```
+
 # How to contribute
 
 If you are willing to contribute to the project you will find the relevant information in
